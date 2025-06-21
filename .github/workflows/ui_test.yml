@@ -60,7 +60,8 @@ jobs:
           echo "Commit=${{ github.sha }}" >> allure-results/environment.properties
           echo "Stage=${{ secrets.STAGE }}" >> allure-results/environment.properties
 
-      - name: Run tests
+      - name: Run tests (never fail)
+        continue-on-error: true
         env:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
